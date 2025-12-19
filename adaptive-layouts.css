@@ -1,0 +1,644 @@
+/* ============================================
+   ADAPTIVE LAYOUTS BY USE CASE
+   ============================================
+   This CSS adapts the interface based on what
+   the user is doing, not just screen size.
+   ============================================ */
+
+/* ============================================
+   1. DASHBOARD VIEW - Overview Mode
+   ============================================ */
+
+/* Dashboard on Phone - Focus on KPIs */
+@media (max-width: 767px) {
+    #view-dashboard.active .stats-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 0.75rem !important;
+    }
+
+    #view-dashboard.active .stat-card {
+        padding: 1rem !important;
+    }
+
+    #view-dashboard.active .stat-value {
+        font-size: 1.5rem !important;
+    }
+
+    /* Hide less important elements on small screens */
+    #view-dashboard.active .dashboard-side {
+        display: none !important;
+    }
+
+    /* Make charts more prominent */
+    #view-dashboard.active .chart-card {
+        min-height: 250px !important;
+    }
+}
+
+/* Dashboard on Tablet - Balanced View */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #view-dashboard.active .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    #view-dashboard.active .charts-container {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+
+    #view-dashboard.active .chart-card {
+        min-height: 300px !important;
+    }
+}
+
+/* Dashboard on Large Tablet - Full View */
+@media (min-width: 1024px) {
+    #view-dashboard.active .stats-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+
+    #view-dashboard.active .charts-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    #view-dashboard.active .dashboard-grid-layout {
+        grid-template-columns: 3fr 1fr !important;
+    }
+}
+
+/* ============================================
+   2. TRADE LOG VIEW - Data Entry Mode
+   ============================================ */
+
+/* Trade Log on Phone - Focus on Recent Trades */
+@media (max-width: 767px) {
+    #view-trades.active .table-container {
+        /* Optimize for scrolling */
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    #view-trades.active table {
+        font-size: 0.875rem !important;
+    }
+
+    #view-trades.active th,
+    #view-trades.active td {
+        padding: 0.75rem 0.5rem !important;
+        white-space: nowrap !important;
+    }
+
+    /* Larger "New Trade" button for easy access */
+    #view-trades.active .btn-primary {
+        width: 100% !important;
+        padding: 1rem !important;
+        font-size: 1.125rem !important;
+    }
+}
+
+/* Trade Log on Tablet - Optimized Table View */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #view-trades.active table {
+        font-size: 0.9375rem !important;
+    }
+
+    #view-trades.active th,
+    #view-trades.active td {
+        padding: 1rem !important;
+    }
+}
+
+/* Trade Log on Large Screen - Full Table */
+@media (min-width: 1024px) {
+    #view-trades.active .table-container {
+        max-height: calc(100vh - 250px) !important;
+        overflow-y: auto !important;
+    }
+}
+
+/* ============================================
+   3. CALENDAR VIEW - Visual Analysis Mode
+   ============================================ */
+
+/* Calendar on Phone - Compact Cells */
+@media (max-width: 767px) {
+    #view-calendar.active .calendar-day {
+        min-height: 60px !important;
+        font-size: 0.75rem !important;
+        padding: 0.25rem !important;
+    }
+
+    #view-calendar.active .calendar-header {
+        font-size: 0.875rem !important;
+        padding: 0.5rem !important;
+    }
+
+    /* Hide day names on very small screens */
+    @media (max-width: 479px) {
+        #view-calendar.active .calendar-header div {
+            font-size: 0.625rem !important;
+        }
+    }
+}
+
+/* Calendar on Tablet - Comfortable View */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #view-calendar.active .calendar-day {
+        min-height: 90px !important;
+        font-size: 0.875rem !important;
+        padding: 0.5rem !important;
+    }
+
+    #view-calendar.active .calendar-header {
+        font-size: 1rem !important;
+        padding: 0.75rem !important;
+    }
+}
+
+/* Calendar on Large Screen - Detailed View */
+@media (min-width: 1024px) {
+    #view-calendar.active .calendar-day {
+        min-height: 120px !important;
+        font-size: 1rem !important;
+        padding: 0.75rem !important;
+    }
+
+    #view-calendar.active .calendar-wrapper {
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* ============================================
+   4. REPORTS VIEW - Analysis Mode
+   ============================================ */
+
+/* Reports on Phone - Simplified Controls */
+@media (max-width: 767px) {
+    #view-reports.active .form-group {
+        width: 100% !important;
+        margin-bottom: 1rem !important;
+    }
+
+    #view-reports.active .btn-primary {
+        width: 100% !important;
+        margin-top: 1rem !important;
+    }
+
+    #view-reports.active .stats-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+}
+
+/* Reports on Tablet - Optimized for Reading */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #view-reports.active .stats-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    #view-reports.active table {
+        font-size: 0.9375rem !important;
+    }
+}
+
+/* Reports on Large Screen - Full Analysis View */
+@media (min-width: 1024px) {
+    #view-reports.active .stats-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        max-width: 1200px !important;
+    }
+
+    #view-reports.active #report-content {
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* ============================================
+   5. MODAL/FORM MODE - Data Entry Focus
+   ============================================ */
+
+/* Trade Modal on Phone - Full Screen */
+@media (max-width: 767px) {
+    .modal-overlay.active .modal {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        max-height: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    .modal-overlay.active .form-row {
+        flex-direction: column !important;
+    }
+
+    .modal-overlay.active .form-group {
+        width: 100% !important;
+    }
+
+    .modal-overlay.active .form-control {
+        font-size: 16px !important;
+        /* Prevent iOS zoom */
+        min-height: 48px !important;
+        padding: 0.75rem !important;
+    }
+
+    .modal-overlay.active select.form-control {
+        font-size: 16px !important;
+        min-height: 48px !important;
+    }
+
+    .modal-overlay.active textarea.form-control {
+        font-size: 16px !important;
+        min-height: 100px !important;
+    }
+
+    .modal-overlay.active .btn {
+        min-height: 52px !important;
+        font-size: 1.125rem !important;
+    }
+}
+
+/* Trade Modal on Tablet - Centered Form */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .modal-overlay.active .modal {
+        width: 90% !important;
+        max-width: 650px !important;
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+    }
+
+    .modal-overlay.active .form-control {
+        min-height: 48px !important;
+        font-size: 16px !important;
+    }
+
+    .modal-overlay.active .form-row {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1rem !important;
+    }
+}
+
+/* Trade Modal on Large Screen - Comfortable Form */
+@media (min-width: 1024px) {
+    .modal-overlay.active .modal {
+        width: 80% !important;
+        max-width: 800px !important;
+        max-height: 85vh !important;
+    }
+
+    .modal-overlay.active .form-row {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 1.5rem !important;
+    }
+}
+
+/* ============================================
+   6. LANDSCAPE MODE - Maximize Screen Real Estate
+   ============================================ */
+
+/* Phone Landscape - Compact Header */
+@media (max-height: 500px) and (orientation: landscape) {
+    .header {
+        padding: 0.5rem 1rem !important;
+    }
+
+    .page-title h1 {
+        font-size: 1.25rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    .page-title p {
+        display: none !important;
+    }
+
+    .stat-card {
+        padding: 0.75rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.75rem !important;
+    }
+
+    .stat-value {
+        font-size: 1.25rem !important;
+    }
+
+    /* Reduce chart heights */
+    .chart-card {
+        min-height: 200px !important;
+    }
+}
+
+/* Tablet Landscape - Optimize for Width */
+@media (min-width: 768px) and (orientation: landscape) {
+    .dashboard-grid-layout {
+        grid-template-columns: 2.5fr 1fr !important;
+    }
+
+    .charts-container {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* ============================================
+   7. READING MODE - Optimize for Content
+   ============================================ */
+
+/* When viewing reports or tables - optimize for reading */
+.reading-mode {
+    font-size: 1.0625rem !important;
+    line-height: 1.6 !important;
+}
+
+@media (min-width: 768px) {
+    .reading-mode {
+        max-width: 900px !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* ============================================
+   8. FOCUS MODE - Minimize Distractions
+   ============================================ */
+
+/* Focus mode for data entry or analysis */
+.focus-mode .sidebar {
+    width: 60px !important;
+}
+
+.focus-mode .logo span {
+    display: none !important;
+}
+
+.focus-mode .nav-item {
+    justify-content: center !important;
+    padding: 1rem 0 !important;
+}
+
+.focus-mode .nav-item i {
+    margin-right: 0 !important;
+}
+
+@media (max-width: 767px) {
+    .focus-mode .sidebar {
+        display: none !important;
+    }
+
+    .focus-mode .app-container {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* ============================================
+   9. PRINT MODE - Optimize for PDF/Print
+   ============================================ */
+
+@media print {
+
+    /* Hide navigation and interactive elements */
+    .sidebar,
+    .header .btn,
+    .modal-overlay {
+        display: none !important;
+    }
+
+    /* Expand content to full width */
+    .app-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    .main-content {
+        padding: 0 !important;
+    }
+
+    /* Optimize tables for printing */
+    .table-container {
+        overflow: visible !important;
+    }
+
+    table {
+        page-break-inside: auto !important;
+    }
+
+    tr {
+        page-break-inside: avoid !important;
+        page-break-after: auto !important;
+    }
+
+    /* Ensure charts are visible */
+    .chart-card {
+        page-break-inside: avoid !important;
+    }
+
+    /* Use light background for printing */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+
+    .stat-card,
+    .chart-card,
+    .table-container {
+        background: white !important;
+        border: 1px solid #ddd !important;
+    }
+}
+
+/* ============================================
+   10. ACCESSIBILITY MODE - Enhanced Readability
+   ============================================ */
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+
+    .stat-card,
+    .chart-card,
+    .table-container {
+        border: 2px solid currentColor !important;
+    }
+
+    .btn {
+        border: 2px solid currentColor !important;
+    }
+}
+
+/* Reduced motion mode */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Large text mode */
+@media (min-width: 768px) {
+    .large-text-mode {
+        font-size: 1.25rem !important;
+    }
+
+    .large-text-mode .stat-value {
+        font-size: 2.5rem !important;
+    }
+
+    .large-text-mode h1 {
+        font-size: 3rem !important;
+    }
+
+    .large-text-mode .btn {
+        font-size: 1.25rem !important;
+        padding: 1rem 2rem !important;
+    }
+}
+
+/* ============================================
+   11. COMPACT MODE - Maximize Data Density
+   ============================================ */
+
+.compact-mode .stat-card {
+    padding: 0.75rem !important;
+}
+
+.compact-mode .stat-label {
+    font-size: 0.75rem !important;
+}
+
+.compact-mode .stat-value {
+    font-size: 1.25rem !important;
+}
+
+.compact-mode table {
+    font-size: 0.875rem !important;
+}
+
+.compact-mode th,
+.compact-mode td {
+    padding: 0.5rem !important;
+}
+
+.compact-mode .chart-card {
+    min-height: 200px !important;
+}
+
+/* ============================================
+   12. COMFORTABLE MODE - Spacious Layout
+   ============================================ */
+
+.comfortable-mode .stat-card {
+    padding: 2rem !important;
+}
+
+.comfortable-mode .stat-label {
+    font-size: 1rem !important;
+    margin-bottom: 0.75rem !important;
+}
+
+.comfortable-mode .stat-value {
+    font-size: 2.5rem !important;
+}
+
+.comfortable-mode table {
+    font-size: 1.0625rem !important;
+}
+
+.comfortable-mode th,
+.comfortable-mode td {
+    padding: 1.5rem !important;
+}
+
+.comfortable-mode .chart-card {
+    min-height: 400px !important;
+    padding: 2rem !important;
+}
+
+.comfortable-mode .stats-grid {
+    gap: 2rem !important;
+}
+
+/* ============================================
+   13. DARK MODE OPTIMIZATIONS BY USE CASE
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+
+    /* Dashboard - Emphasize charts */
+    #view-dashboard.active .chart-card {
+        background: rgba(255, 255, 255, 0.03) !important;
+    }
+
+    /* Reports - Better readability */
+    #view-reports.active {
+        background: rgba(0, 0, 0, 0.2) !important;
+    }
+
+    /* Calendar - Softer colors */
+    #view-calendar.active .calendar-day {
+        background: rgba(255, 255, 255, 0.02) !important;
+    }
+}
+
+/* ============================================
+   14. TOUCH MODE - Optimize for Touch Input
+   ============================================ */
+
+@media (pointer: coarse) {
+
+    /* Larger touch targets */
+    .btn {
+        min-height: 48px !important;
+        min-width: 48px !important;
+    }
+
+    .nav-item {
+        min-height: 52px !important;
+    }
+
+    input[type="checkbox"] {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    /* More spacing between interactive elements */
+    .form-group {
+        margin-bottom: 1.5rem !important;
+    }
+
+    /* Larger table cells */
+    table td {
+        padding: 1rem !important;
+    }
+}
+
+/* ============================================
+   15. MOUSE MODE - Optimize for Precision
+   ============================================ */
+
+@media (pointer: fine) {
+
+    /* Smaller, more precise controls */
+    .btn {
+        min-height: 36px !important;
+    }
+
+    /* Hover effects */
+    .btn:hover {
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3) !important;
+    }
+
+    .nav-item:hover {
+        background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    table tr:hover {
+        background: rgba(255, 255, 255, 0.05) !important;
+    }
+}
